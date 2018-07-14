@@ -1,19 +1,29 @@
 package DAO;
 
 import Entity.UserEntity;
+
+/**
+ * @Author: Marvelous Sylvester
+ * @Github: vester3500
+ * @Project: XML-Parsing-REST-API
+ **/
+
+
+
+
 import javax.ejb.*;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.Collection;
 import java.util.List;
 
-@Remote
+@Local
 @Stateless
 public class UserDAO implements UserDAOLocal {
 
     @PersistenceContext
-    EntityManager em;
-
+    
+     EntityManager em;
 
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public  void addUser( UserEntity user){
@@ -32,7 +42,6 @@ public class UserDAO implements UserDAOLocal {
         return (UserEntity)  em.createQuery(" SELECT u FROM user u WHERE u.id =: id ").setParameter("id", id).getSingleResult();
     }
 
-
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public  UserEntity getUserByUsername(String username){
 
@@ -43,6 +52,7 @@ public class UserDAO implements UserDAOLocal {
     public Collection<?> getAllusers(){
 
         return  (List<UserEntity>) em.createQuery("FROM user").getResultList();
+
     }
 
 
@@ -60,13 +70,16 @@ public class UserDAO implements UserDAOLocal {
 
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public  void updateUser (UserEntity user){
-        return ;
+
     }
 
 
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public  void deleteUser(String username){
-        return ;
+
+         em.createQuery("DELETE u FROM user WHERE u.username =: username").setParameter("username", username);
+
+
     }
 
 

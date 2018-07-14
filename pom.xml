@@ -5,27 +5,40 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.webservice</groupId>
-    <artifactId>com.SheisBeautiful</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>SheisBeautiful</artifactId>
+    <packaging>war</packaging>
+    <version>1.0</version>
+
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
-            </plugin></plugins>
-    </build>
+    <plugins>
+
+        <plugin>
+            <groupId>org.wildfly.plugins</groupId>
+            <artifactId>wildfly-maven-plugin</artifactId>
+            <version>1.2.2.Final</version>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <configuration>
+                <webXml>webapp\WEB-INF\web.xml</webXml>
+            </configuration>
+        </plugin>
+
+    </plugins>
+</build>
+
 
     <name>SheisBeautiful</name>
     <dependencies>
         <dependency>
             <groupId>org.jboss.spec</groupId>
             <artifactId>jboss-javaee-7.0</artifactId>
+
             <version>1.0.0.Final</version>
             <type>pom</type>
             <scope>provided</scope>
         </dependency>
 
     </dependencies>
-
 </project>

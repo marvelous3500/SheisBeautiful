@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence"
              version="1.0">
-    <persistence-unit name="movieSystemDB">
+    <persistence-unit name="MySqlDS">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        <jta-data-source>java:/SQL</jta-data-source>
+        <jta-data-source>java:/MySql</jta-data-source>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>

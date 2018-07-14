@@ -7,51 +7,47 @@ import java.io.Serializable;
 @Table(name="image")
 public class ImageEntity implements Serializable {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
+    @Column(name = "image_id")
+    private Integer Image_id;
 
     @Column(name = "images")
-    private byte [] images;
+    private byte[] images;
+  
+    
+	public ImageEntity() {
+
+	}
 
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "id", referencedColumnName = "id")
-    @Column(name = "contestant_id")
-    private  ContesttantEntity contestant;
+	public ImageEntity(Integer image_id, byte[] images) {
+		super();
+		Image_id = image_id;
+		this.images = images;
+	}
 
 
-    public ImageEntity() {
-    }
+	public Integer getImage_id() {
+		return Image_id;
+	}
 
-    public ImageEntity(Integer id, byte[] images, ContesttantEntity contestant) {
-        this.id = id;
-        this.images = images;
-        this.contestant = contestant;
-    }
 
-    public Integer getId() {
-        return id;
-    }
+	public void setImage_id(Integer image_id) {
+		Image_id = image_id;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
-    public byte[] getImages() {
-        return images;
-    }
+	public byte[] getImages() {
+		return images;
+	}
 
-    public void setImages(byte[] images) {
-        this.images = images;
-    }
 
-    public ContesttantEntity getContestant() {
-        return contestant;
-    }
+	public void setImages(byte[] images) {
+		this.images = images;
+	}
+	
 
-    public void setContestant(ContesttantEntity contestant) {
-        this.contestant = contestant;
-    }
+    
 }
