@@ -26,14 +26,14 @@ public class Votes  implements Serializable{
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "contestent_id")
-    private ContesttantEntity contestent;
+    private Contestants contestent;
     
 
 	public Votes() {
 		
 	}
 
-	public Votes(Integer id, Integer number_of_votes, ContesttantEntity contestent) {
+	public Votes(Integer id, Integer number_of_votes, Contestants contestent) {
 		this.id = id;
 		this.number_of_votes = number_of_votes;
 		this.contestent = contestent;
@@ -55,16 +55,11 @@ public class Votes  implements Serializable{
 		this.number_of_votes = number_of_votes;
 	}
 
-	public ContesttantEntity getContestent() {
+	public Contestants getContestent() {
 		return contestent;
 	}
 
-	public void setContestent(ContesttantEntity contestent) {
+	public void setContestent(Contestants contestent) {
 		this.contestent = contestent;
 	}
-
-	
-	
-
-	
 }

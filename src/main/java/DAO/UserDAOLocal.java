@@ -7,7 +7,7 @@
 
 package DAO;
 
-import Entity.UserEntity;
+import Entity.User;
 
 import javax.ejb.Local;
 import java.util.Collection;
@@ -16,11 +16,11 @@ import java.util.Collection;
 @Local
 public interface UserDAOLocal {
 
-    public  void addUser( UserEntity user);
+    public  void addUser( User user);
 
-    public  UserEntity getUserById (Integer id );
+    public User getUserById (Integer id );
 
-    public  UserEntity getUserByUsername(String username);
+    public User getUserByUsername(String username);
 
     public Collection<?> getAllusers();
 
@@ -28,7 +28,7 @@ public interface UserDAOLocal {
 
     public boolean checkusername (String username);
 
-    public  void updateUser (UserEntity user);
+    public  void updateUser (User user);
 
     public  void deleteUser(String username);
 }

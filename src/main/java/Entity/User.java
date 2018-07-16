@@ -11,8 +11,8 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "user")
-public class UserEntity  implements Serializable{
+@Table(name = "User")
+public class User implements Serializable{
 
 
 	private static final long serialVersionUID = -3272921461487563688L;
@@ -35,16 +35,12 @@ public class UserEntity  implements Serializable{
     @Column(name = "role")
     private   String Role;
 
-    private  ContesttantEntity contesttant;
+    private Contestants contesttant;
 
-    public UserEntity() {
+    public User() {
     }
-    
-    
 
-	public UserEntity(long id, String username, String email, String password, String role,
-			ContesttantEntity contesttant) {
-
+	public User(long id, String username, String email, String password, String role, Contestants contesttant) {
 		this.id = id;
 		this.username = username;
 		this.email = email;
@@ -53,7 +49,9 @@ public class UserEntity  implements Serializable{
 		this.contesttant = contesttant;
 	}
 
-
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
 
 	public long getId() {
 		return id;
@@ -95,16 +93,11 @@ public class UserEntity  implements Serializable{
 		Role = role;
 	}
 
-	public ContesttantEntity getContesttant() {
+	public Contestants getContesttant() {
 		return contesttant;
 	}
 
-	public void setContesttant(ContesttantEntity contesttant) {
+	public void setContesttant(Contestants contesttant) {
 		this.contesttant = contesttant;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-    
 }

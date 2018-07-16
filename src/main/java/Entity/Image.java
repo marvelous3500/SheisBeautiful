@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name="image")
-public class ImageEntity implements Serializable {
+@Table(name="Image")
+public class Image implements Serializable {
 
 
     @Id
@@ -17,12 +17,12 @@ public class ImageEntity implements Serializable {
     private byte[] images;
   
     
-	public ImageEntity() {
+	public Image() {
 
 	}
 
 
-	public ImageEntity(Integer image_id, byte[] images) {
+	public Image(Integer image_id, byte[] images) {
 		super();
 		Image_id = image_id;
 		this.images = images;

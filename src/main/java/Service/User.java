@@ -1,10 +1,8 @@
 package Service;
 
 import DAO.UserDAOLocal;
-import Entity.UserEntity;
 
 import javax.ejb.Local;
-import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.Collection;
@@ -17,21 +15,21 @@ public class User implements UserLocal {
     @Inject
     private UserDAOLocal  userBean;
 
-    public void adduser(UserEntity user) {
+    public void adduser(Entity.User user) {
           userBean.addUser(user);
     }
 
-    public UserEntity  getUserByUsername(String username){
+    public Entity.User getUserByUsername(String username){
 
         return userBean.getUserByUsername(username);
     }
 
-    public UserEntity getUserById(Integer id ){
+    public Entity.User getUserById(Integer id ){
         return userBean.getUserById(id);
 
     }
 
-    public  void updateUser(UserEntity user){
+    public  void updateUser(Entity.User user){
 
         userBean.updateUser( user);
     }

@@ -1,6 +1,6 @@
 package Controller;
 
-import Entity.UserEntity;
+import Entity.User;
 import Service.UserLocal;
 import javax.ejb.EJB;
 import javax.websocket.server.PathParam;
@@ -16,24 +16,31 @@ public class Users {
      private UserLocal usersEJB;
 
     @POST
-    @Path("/addUser/{username}/{password}/{email}")
+    @Path("/addUser")
     @Consumes(MediaType.APPLICATION_JSON)
-    public  void addUsers (UserEntity user, @PathParam("username") String username, @PathParam("password") String password, @PathParam("email") String email ) {
+    public  void addUsers (User user) {
          usersEJB.adduser(user);
 
     }
 
     @GET
+    @Path("/test")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String Test (){
+        return "am testing the app and it work";
+    }
+
+    @GET
     @Path("/getUserByUsername/{username}")
     @Produces(MediaType.APPLICATION_JSON)
-    public UserEntity getUserByUsername (@PathParam("username") String username) {
+    public User getUserByUsername (@PathParam("username") String username) {
         return usersEJB.getUserByUsername(username);
     }
 
     @GET
     @Path("/getUsernameById/{Useer_id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public  UserEntity getUserById(@PathParam("id") Integer id){
+    public User getUserById(@PathParam("id") Integer id){
         return usersEJB.getUserById(id);
     }
 
@@ -56,6 +63,12 @@ public class Users {
     @Path("/getAllUsers")
     public Collection<?> getAllUsers(){
         return usersEJB.getAllUsers();
+    }
+
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    public  void UpdateUser (User user){
+        usersEJB.updateUser(user);
     }
 
 }

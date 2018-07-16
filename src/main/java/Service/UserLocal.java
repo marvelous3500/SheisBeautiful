@@ -1,22 +1,19 @@
 package Service;
 
-import Entity.UserEntity;
+import Entity.User;
 
 import javax.ejb.Local;
-import javax.ejb.Remote;
 import java.util.Collection;
-import java.util.Collections;
-
 
 
 @Local
 public interface UserLocal {
 
-    public  void adduser(UserEntity user);
+    public  void adduser(User user);
 
-    public  UserEntity getUserByUsername(String username);
+    public User getUserByUsername(String username);
 
-    public  UserEntity getUserById(Integer id);
+    public User getUserById(Integer id);
 
     public Collection<?> getAllUsers();
 
@@ -24,7 +21,7 @@ public interface UserLocal {
 
     public boolean checkusername(String username);
 
-    public  void updateUser(UserEntity user);
+    public  void updateUser(User user);
 
     public  void deleteUser(String username);
 
