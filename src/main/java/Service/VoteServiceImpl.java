@@ -26,4 +26,9 @@ public class VoteServiceImpl implements VoteServiceLocal {
 
     }
 
+    public  void  makeVote(Integer contestant_id){
+
+     votelocalBean.makeVote(contestant_id);
+    }
+
 }

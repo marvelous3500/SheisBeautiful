@@ -5,9 +5,7 @@ import Entity.Votes;
 import Service.VoteServiceLocal;
 
 import javax.ejb.EJB;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 @Path("/vote")
@@ -31,6 +29,14 @@ public class VoteControler {
     public void updateVotes(Votes votes){
         voteServiceLocalBean.updateVoteService(votes);
 
+    }
+
+    @GET
+    @Path("/makevote{constant_id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public  void  makeVote(  @PathParam("Contestant_id") Integer contestant_id){
+
+        voteServiceLocalBean.makeVote(contestant_id);
     }
 
 

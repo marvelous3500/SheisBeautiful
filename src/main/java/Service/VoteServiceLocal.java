@@ -4,7 +4,8 @@ import Entity.Votes;
 
 public interface VoteServiceLocal {
 
-    public  void addVoteService(Votes vote);
+    void addVoteService(Votes vote);
+    void updateVoteService(Votes vote);
+    void  makeVote(Integer contestant_id);
 
-    public void updateVoteService(Votes vote);
 }

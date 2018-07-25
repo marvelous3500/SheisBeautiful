@@ -26,4 +26,14 @@ public class VoteImpl  implements Votelocal{
     public  void  updateVote(Votes votes){
         em.merge(votes);
     }
+
+    public  void makeVote(Integer contestant_id) {
+
+        Votes vote = em.find(Votes.class, contestant_id);
+        Integer updateVote = vote.getNumber_of_votes() + 1;
+        vote.setNumber_of_votes(updateVote);
+        em.merge(vote);
+        em.flush();
+
+    }
 }

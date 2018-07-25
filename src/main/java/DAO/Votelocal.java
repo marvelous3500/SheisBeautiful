@@ -13,5 +13,7 @@ public interface Votelocal {
 
     public  void updateVote(Votes vote);
 
+    void makeVote( Integer contestsnt_id);
+
 
 }
