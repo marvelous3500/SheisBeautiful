@@ -1,6 +1,7 @@
 package Entity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.*;
 
 /**
@@ -11,7 +12,7 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "User")
+@Table(name = "user")
 public class User implements Serializable{
 
 
@@ -20,7 +21,7 @@ public class User implements Serializable{
 	@Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     private  long id;
+     private  Long id;
 
     @Column(name = "username")
     private  String username;
@@ -32,32 +33,40 @@ public class User implements Serializable{
     @Column(name = "password")
     private  String password;
 
-    @Column(name = "role")
-    private   String Role;
 
-    private Contestants contesttant;
+    @Column(name  = " isactive")
+	private  boolean isactive;
 
-    public User() {
-    }
 
-	public User(long id, String username, String email, String password, String role, Contestants contesttant) {
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
+	private Contestants contestants;
+
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
+	private Role role;
+
+
+	public User() {
+	}
+
+	public User(Long id, String username, String email, String password, boolean isactive, Contestants contestants, Role role) {
 		this.id = id;
 		this.username = username;
 		this.email = email;
 		this.password = password;
-		Role = role;
-		this.contesttant = contesttant;
+		this.isactive = isactive;
+		this.contestants = contestants;
+		this.role = role;
 	}
 
 	public static long getSerialVersionUID() {
 		return serialVersionUID;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -85,19 +94,27 @@ public class User implements Serializable{
 		this.password = password;
 	}
 
-	public String getRole() {
-		return Role;
+	public boolean isIsactive() {
+		return isactive;
 	}
 
-	public void setRole(String role) {
-		Role = role;
+	public void setIsactive(boolean isactive) {
+		this.isactive = isactive;
 	}
 
-	public Contestants getContesttant() {
-		return contesttant;
+	public Contestants getContestants() {
+		return contestants;
 	}
 
-	public void setContesttant(Contestants contesttant) {
-		this.contesttant = contesttant;
+	public void setContestants(Contestants contestants) {
+		this.contestants = contestants;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
 }

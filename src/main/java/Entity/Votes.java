@@ -17,7 +17,6 @@ public class Votes  implements Serializable{
 
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Integer id;
     
     @Column(name = "number_of_votes")

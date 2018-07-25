@@ -1,5 +1,6 @@
 package Entity;
 
+import javax.jms.JMSPasswordCredential;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -17,9 +18,7 @@ public class Contestants implements Serializable {
 
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Integer id;
-
     @Column(name = "firstname")
     private  String firstname;
 
@@ -32,15 +31,17 @@ public class Contestants implements Serializable {
     @Column(name = "phone_number")
     private  Integer phone_number;
 
-    @OneToMany(cascade = CascadeType.ALL)
-
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "contestant_id")
     private  List <Image> image ;
 
-    
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name =  "contestant_id", nullable = false)
     private User user;
-    
-    @OneToMany(cascade = CascadeType.ALL)
+
+
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "contestant_vote_id")
     private List<Votes> votes;
 

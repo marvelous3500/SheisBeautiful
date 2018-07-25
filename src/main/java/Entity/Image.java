@@ -9,7 +9,6 @@ public class Image implements Serializable {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "image_id")
     private Integer Image_id;
 
