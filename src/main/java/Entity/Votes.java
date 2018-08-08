@@ -24,7 +24,7 @@ public class Votes  implements Serializable{
     private  Integer number_of_votes;
     
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne( cascade =  CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "contestent_id")
     private Contestants contestent;
     

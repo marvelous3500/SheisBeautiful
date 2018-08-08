@@ -20,7 +20,7 @@ public class User implements Serializable{
 	@Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     private  long id;
+     private  long user_id;
 
     @Column(name = "username")
     private  String username;
@@ -32,33 +32,32 @@ public class User implements Serializable{
     @Column(name = "password")
     private  String password;
 
-    @Column(name = "role")
-    private   String Role;
-
-    private Contestants contesttant;
 
     public User() {
     }
 
-	public User(long id, String username, String email, String password, String role, Contestants contesttant) {
-		this.id = id;
+	public User(long user_id, String username, String email, String password) {
+		this.user_id = user_id;
 		this.username = username;
 		this.email = email;
 		this.password = password;
-		Role = role;
-		this.contesttant = contesttant;
+	}
+
+	public User(String username,  String password) {
+		this.username = username;
+		this.password = password;
 	}
 
 	public static long getSerialVersionUID() {
 		return serialVersionUID;
 	}
 
-	public long getId() {
-		return id;
+	public long getUser_id() {
+		return user_id;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setUser_id(long user_id) {
+		this.user_id = user_id;
 	}
 
 	public String getUsername() {
@@ -83,21 +82,5 @@ public class User implements Serializable{
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getRole() {
-		return Role;
-	}
-
-	public void setRole(String role) {
-		Role = role;
-	}
-
-	public Contestants getContesttant() {
-		return contesttant;
-	}
-
-	public void setContesttant(Contestants contesttant) {
-		this.contesttant = contesttant;
 	}
 }

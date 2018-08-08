@@ -18,7 +18,7 @@ public class Contestants implements Serializable {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Integer id;
+    private  Integer contestant_id;
 
     @Column(name = "firstname")
     private  String firstname;
@@ -32,38 +32,39 @@ public class Contestants implements Serializable {
     @Column(name = "phone_number")
     private  Integer phone_number;
 
-    @OneToMany(cascade = CascadeType.ALL)
-
-    private  List <Image> image ;
-
-    
-    @OneToOne(cascade = CascadeType.ALL)
-    private User user;
-    
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "contestant_vote_id")
-    private List<Votes> votes;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    private  User user;
 
     public Contestants() {
     }
 
-    public Contestants(Integer id, String firstname, String lastname, String nikename, Integer phone_number, List<Image> image, User user, List<Votes> votes) {
-        this.id = id;
+    public Contestants(Integer contestant_id, String firstname, String lastname, String nikename, Integer phone_number, User user) {
+        this.contestant_id = contestant_id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.nikename = nikename;
         this.phone_number = phone_number;
-        this.image = image;
         this.user = user;
-        this.votes = votes;
     }
 
-    public Integer getId() {
-        return id;
+    public Contestants(String firstname, String lastname, String nikename, Integer phone_number) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.nikename = nikename;
+        this.phone_number = phone_number;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Contestants(User user) {
+        this.user = user;
+    }
+
+    public Integer getContestant_id() {
+        return contestant_id;
+    }
+
+    public void setContestant_id(Integer contestant_id) {
+        this.contestant_id = contestant_id;
     }
 
     public String getFirstname() {
@@ -98,27 +99,11 @@ public class Contestants implements Serializable {
         this.phone_number = phone_number;
     }
 
-    public List<Image> getImage() {
-        return image;
-    }
-
-    public void setImage(List<Image> image) {
-        this.image = image;
-    }
-
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public List<Votes> getVotes() {
-        return votes;
-    }
-
-    public void setVotes(List<Votes> votes) {
-        this.votes = votes;
     }
 }
