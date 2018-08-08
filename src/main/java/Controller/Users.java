@@ -16,7 +16,7 @@ public class Users {
      private UserLocal usersEJB;
 
     @POST
-    @Path("/addUser")
+    @Path("/adduser")
     @Consumes(MediaType.APPLICATION_JSON)
     public  void addUsers (User user) {
          usersEJB.adduser(user);
@@ -31,14 +31,14 @@ public class Users {
     }
 
     @GET
-    @Path("/getUserByUsername/{username}")
+    @Path("/getuserByUsername/{username}")
     @Produces(MediaType.APPLICATION_JSON)
     public User getUserByUsername (@PathParam("username") String username) {
         return usersEJB.getUserByUsername(username);
     }
 
     @GET
-    @Path("/getUsernameById/{Useer_id}")
+    @Path("/getusernameById/{Useer_id}")
     @Produces(MediaType.APPLICATION_JSON)
     public User getUserById(@PathParam("id") Integer id){
         return usersEJB.getUserById(id);
@@ -61,9 +61,11 @@ public class Users {
 
     @GET
     @Path("/getAllUsers")
+    @Produces(MediaType.APPLICATION_JSON)
     public Collection<?> getAllUsers(){
         return usersEJB.getAllUsers();
     }
+
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)

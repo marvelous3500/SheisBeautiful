@@ -13,6 +13,7 @@ package DAO;
 import javax.ejb.*;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.Collection;
 import java.util.List;
 import Entity.User;
@@ -50,6 +51,7 @@ public class UserDAO implements UserDAOLocal {
     public Collection<?> getAllusers(){
 
         return  (List<User>) em.createQuery("FROM User").getResultList();
+
 
     }
 
