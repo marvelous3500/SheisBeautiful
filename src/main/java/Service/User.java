@@ -2,6 +2,7 @@ package Service;
 
 import DAO.UserDAOLocal;
 
+import javax.ejb.EJB;
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -12,7 +13,7 @@ import java.util.Collection;
 @Stateless
 public class User implements UserLocal {
 
-    @Inject
+    @EJB
     private UserDAOLocal  userBean;
 
     public void adduser(Entity.User user) {
