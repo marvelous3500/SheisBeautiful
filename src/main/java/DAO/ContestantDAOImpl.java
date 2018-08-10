@@ -1,6 +1,7 @@
 package DAO;
 
 
+
 import Entity.Contestants;
 //import fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.ejb.Remote;
@@ -15,7 +16,7 @@ import java.util.List;
 
 @Remote
 @Stateless
-public class ContestantDOA implements ContestantDAOLocal {
+public class ContestantDAOImpl implements ContestantDAOLocal {
 
     @PersistenceContext
 
@@ -23,7 +24,7 @@ public class ContestantDOA implements ContestantDAOLocal {
 
 
 
-   // @JsonIgnoreProperties(ignoreUnknown = true)
+    // @JsonIgnoreProperties(ignoreUnknown = true)
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public  void addContestant (Contestants contestants){
 
