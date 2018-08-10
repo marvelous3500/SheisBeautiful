@@ -43,7 +43,8 @@ public class UserDAO implements UserDAOLocal {
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public User getUserByUsername(String username){
 
-        return (User)  em.createQuery("SELECT m FROM User m WHERE m.username=:username").setParameter("username", username).getSingleResult();
+        return (User)  em.createQuery("SELECT m FROM User m WHERE m.username=:username")
+                .setParameter("username", username).getSingleResult();
     }
 
 

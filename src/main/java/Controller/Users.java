@@ -40,8 +40,8 @@ public class Users {
     @GET
     @Path("/getusernameById/{Useer_id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public User getUserById(@PathParam("id") Integer id){
-        return usersEJB.getUserById(id);
+    public User getUserById(@PathParam("user_id") Integer user_id){
+        return usersEJB.getUserById(user_id);
     }
 
     @GET

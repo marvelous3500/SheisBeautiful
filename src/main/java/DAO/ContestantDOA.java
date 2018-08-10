@@ -2,7 +2,7 @@ package DAO;
 
 
 import Entity.Contestants;
-
+//import fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -12,6 +12,7 @@ import javax.persistence.PersistenceContext;
 import java.util.Collection;
 import java.util.List;
 
+
 @Remote
 @Stateless
 public class ContestantDOA implements ContestantDAOLocal {
@@ -20,6 +21,9 @@ public class ContestantDOA implements ContestantDAOLocal {
 
     EntityManager em;
 
+
+
+   // @JsonIgnoreProperties(ignoreUnknown = true)
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public  void addContestant (Contestants contestants){
 
